@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO-KEY — CONTACT</title>
+  <link rel="stylesheet" href="../assets/css/global_style.css">
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Keeyiya</div>
+    <ul>
+      <li><a href="../home/index.html">Home</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../projects/index.html">Project</a></li>
+      <li><a href="../contact/index.html" style="background: var(--color-green);">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="contact-wrapper">
+    <div class="thanks-note">
+      <h1>THANK YOU!</h1>
+      <p>* for taking a look into my creative mind.</p>
+      <div class="star-deco">★</div>
+    </div>
+
+    <div class="form-card">
+      <div class="tape-corner"></div>
+      <h2>LETS COLLAB!</h2>
+      <form id="zine-form">
+        <div class="input-group">
+          <label>Your Name / Brand:</label>
+          <input type="text" name="from_name" placeholder="e.g. Bro John" required>
+        </div>
+        <div class="input-group">
+          <label>Your Email:</label>
+          <input type="email" name="from_email" placeholder="john@example.com" required>
+        </div>
+        <div class="input-group">
+          <label>Spill the project details:</label>
+          <textarea name="message" rows="4" placeholder="Briefly describe your idea..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">SEND IT!</button>
+      </form>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>

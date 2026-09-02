@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO-KEY — PROJECTS</title>
+  <link rel="stylesheet" href="../assets/css/global_style.css">
+  <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">KEY.PORTFOLIO</div>
+    <ul>
+      <li><a href="../home/index.html">Home</a></li>
+      <li><a href="../about/index.html">About</a></li>
+      <li><a href="../projects/index.html" style="background: var(--color-green);">Project</a></li>
+      <li><a href="../contact/index.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="projects-container">
+    <div class="page-badge">★ SELECTED WORKS GALLERY</div>
+    <h1 class="main-title">CLICK TO UNBOX WORKS </h1>
+
+    <section class="featured-showcase">
+      <div class="featured-copy">
+        <span class="mini-tag">FEATURED DESIGN</span>
+        <h2>Motion Graphics</h2>
+        <p>
+          A cinematic collage study blending soft landscapes, handwritten typography,
+          and warm storytelling moodboards inspired by quiet, emotional scenes.
+        </p>
+        <button type="button" id="viewCollectionBtn">View collection</button>
+      </div>
+
+      <div class="featured-poster" aria-label="Featured motion graphics video">
+        <video id="featuredVideo" class="featured-video" autoplay muted playsinline preload="metadata" poster="../assets/media/portfolio-mascott.png">
+          <source src="../assets/media/motion-graphics.mp4" type="video/mp4">
+        </video>
+
+        <div class="featured-controls">
+          <button type="button" class="maximize-btn" aria-label="Maximize video">⤢</button>
+        </div>
+
+        <div class="featured-end-state">
+          <button type="button" class="replay-btn" aria-label="Replay video">Replay</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallerySection" class="gallery-grid">
+      <!-- 1. MeanToBe -->
+      <div class="project-card card-pink" onclick="openGallery('MeanToBe', ['MeanToBe.jpg', 'MeanToBe(1).jpg', 'MeanToBe(2).jpg', 'MeanToBe(3).jpg', 'MeanToBe(4).jpg', 'MeanToBe(5).jpg'])">
+        <div class="tape-tag">BRANDING</div>
+        <div class="card-img-box">
+          <img src="../assets/images/MeanToBe/MeanToBe.jpg" alt="MeanToBe">
+        </div>
+        <div class="card-info">
+          <h3>MEANTOBE</h3>
+          <p>6 Photos • Brand Identity</p>
+        </div>
+      </div>
+
+      <!-- 2. PizziesT.co -->
+      <div class="project-card card-yellow" onclick="openGallery('PizziesT.co', ['pizziest_.png', 'pizziest_(1).png', 'PizziesT_20260828_202812_0000.png', 'pizziest.png', 'pizziest(1).png', 'pizziest(2).png'])">
+        <div class="tape-tag">MERCH</div>
+        <div class="card-img-box">
+          <img src="../assets/images/PizziesT.co/pizziest_.png" alt="PizziesT">
+        </div>
+        <div class="card-info">
+          <h3>PIZZIEST.CO</h3>
+          <p>8 Assets • Apparel Design</p>
+        </div>
+      </div>
+
+      <!-- 3. Photography -->
+      <div class="project-card card-blue" onclick="openGallery('Photography', ['shot1.jpg', 'shot2.jpg', 'shot3.jpg', 'shot4.jpg', 'shot5.jpg', 'shot6.jpg', 'shot7.jpg', 'shot8.jpg', 'shot9.jpg', 'shot10.jpg', 'shot11.jpg', 'shot12.jpg', 'shot13.jpg', 'shot14.jpg'])">
+        <div class="tape-tag">SHOTS</div>
+        <div class="card-img-box">
+          <img src="../assets/images/Photography/shot5.jpg" alt="Photography">
+        </div>
+        <div class="card-info">
+          <h3>PHOTOGRAPHY</h3>
+          <p>14 Shots • Street & Analog</p>
+        </div>
+      </div>
+
+      <!-- 4. Photo Product -->
+      <div class="project-card card-green" onclick="openGallery('Photo Product', ['1.jpg', '2.jpg', '3.jpg', '4.jpg'])">
+        <div class="tape-tag">STYLING</div>
+        <div class="card-img-box">
+          <img src="../assets/images/Photo Product/1.jpg" alt="Photo Product">
+        </div>
+        <div class="card-info">
+          <h3>PHOTO PRODUCT</h3>
+          <p>4 Photos • Commercial Studio</p>
+        </div>
+      </div>
+
+      <!-- 6. 👽 Alien Collection -->
+      <div class="project-card card-blue" onclick="openGallery('👽', ['1.png', '2.png', '3.png', '4.png', '5.png', '6.jpg'])">
+        <div class="tape-tag">ALIEN</div>
+        <div class="card-img-box">
+          <img src="../assets/images/👽/1.png" alt="Alien artwork">
+        </div>
+        <div class="card-info">
+          <h3>👽 ALIEN CORE</h3>
+          <p>5 Frames • Character Study</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL 1: GRID GALLERY -->
+  <div id="galleryModal" class="modal-overlay">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeGallery()">✖ CLOSE</button>
+      <h2 id="modalTitle" class="modal-title">TITLE</h2>
+      <p class="modal-hint">Click on a photo to view the full-size details!</p>
+      <div id="modalImages" class="modal-images-grid"></div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: DETAIL PHOTO ZOOM & NAVIGASI -->
+  <div id="detailModal" class="modal-overlay detail-overlay">
+    <div class="detail-box">
+      <button class="close-btn" onclick="closeDetail()">✖ CLOSE PREVIEW</button>
+      <div class="detail-content">
+        <button class="nav-btn prev-btn" onclick="changeDetailImage(-1)">❮ PREV</button>
+
+        <div class="detail-media-wrap">
+          <div class="detail-img-wrapper">
+            <span class="detail-badge">INSPECT MODE </span>
+            <img id="detailImage" src="" alt="Detail View">
+          </div>
+          <p id="detailCaption" class="detail-caption"></p>
+        </div>
+
+        <button class="nav-btn next-btn" onclick="changeDetailImage(1)">NEXT ❯</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="projects.js"></script>
+</body>
+</html>

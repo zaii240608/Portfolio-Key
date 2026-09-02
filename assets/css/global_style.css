@@ -1,0 +1,118 @@
+:root {
+  --bg-main: #f5f0e8;
+  --bg-soft: #fffdf9;
+  --color-pink: #ff6ea7;
+  --color-yellow: #ffe15d;
+  --color-green: #8ae77d;
+  --color-blue: #4cb7b0;
+  --color-dark: #161515;
+  --text-soft: #403d3a;
+  --accent-mauve: #d98fae;
+  --text-typewriter: #2b2928;
+  --font-title: 'Impact', 'Arial Black', sans-serif;
+  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-thick: 3px solid #161515;
+  --shadow-block: 6px 6px 0px #161515;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 110, 167, 0.08), transparent 20%),
+    radial-gradient(circle at bottom right, rgba(76, 183, 176, 0.12), transparent 25%),
+    var(--bg-main);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  transition: all 0.2s ease;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 225, 93, 0.95);
+  border-bottom: var(--border-thick);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 18px rgba(22, 21, 21, 0.08);
+}
+
+nav .logo {
+  font-family: var(--font-title);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  background: var(--color-pink);
+  color: #fff;
+  padding: 0.35rem 0.9rem;
+  border: var(--border-thick);
+  transform: rotate(-3deg);
+  box-shadow: 4px 4px 0px var(--color-dark);
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  list-style: none;
+}
+
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: var(--color-dark);
+  padding: 0.5rem 0.9rem;
+  background: #fff;
+  border: var(--border-thick);
+  box-shadow: 3px 3px 0px var(--color-dark);
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background: var(--color-green);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--color-dark);
+}
+
+@media (max-width: 640px) {
+  nav {
+    padding: 0.8rem 1rem;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav ul {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.7rem;
+  }
+}
