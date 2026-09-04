@@ -253,25 +253,36 @@
 
 .card-info {
   display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 0.75rem;
-  margin-top: 0.9rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.32rem;
+  margin-top: 0.82rem;
+  min-height: 52px;
 }
 
 .card-info h3 {
+  margin: 0;
+  width: 100%;
   font-family: var(--font-title);
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
-  line-height: 1;
+  font-size: clamp(1.05rem, 1.7vw, 1.5rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  transform: translateY(1px);
 }
 
 .card-info p {
-  font-size: 0.72rem;
-  font-weight: bold;
+  margin: 0;
+  display: inline-block;
+  font-size: 0.63rem;
+  line-height: 1.2;
+  font-weight: 700;
   background: rgba(255, 255, 255, 0.75);
   border: 2px solid var(--color-dark);
-  padding: 0.35rem 0.55rem;
-  text-align: right;
+  padding: 0.26rem 0.42rem;
+  text-align: left;
+  white-space: normal;
+  max-width: 100%;
 }
 
 .modal-overlay {
