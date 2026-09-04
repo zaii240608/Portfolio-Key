@@ -127,4 +127,23 @@
     padding: 1.5rem 1.25rem;
   }
 }
+
+@media (max-width: 420px) {
+  .about-section {
+    margin-top: 2rem;
+  }
+
+  .photo-strip {
+    width: calc(100% - 0.5rem);
+  }
+
+  .photo-strip img {
+    height: 34vw;
+    min-height: 105px;
+  }
+
+  .bio-card p {
+    font-size: 0.95rem;
+  }
+}
    

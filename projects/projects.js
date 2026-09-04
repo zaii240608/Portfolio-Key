@@ -10,6 +10,73 @@ const featuredPoster = document.querySelector('.featured-poster');
 const featuredVideo = document.getElementById('featuredVideo');
 const replayBtn = document.querySelector('.replay-btn');
 const maximizeBtn = document.querySelector('.maximize-btn');
+const showMoreBtn = document.getElementById('showMoreBtn');
+const projectLoader = document.getElementById('projectLoader');
+const loaderProgress = document.getElementById('loaderProgress');
+const loaderStatus = document.getElementById('loaderStatus');
+
+function finishProjectLoading() {
+  if (!projectLoader) {
+    return;
+  }
+
+  projectLoader.classList.add('is-hidden');
+  projectLoader.setAttribute('aria-hidden', 'true');
+}
+
+function loadProjectMedia() {
+  if (!projectLoader) {
+    return;
+  }
+
+  const media = [...document.querySelectorAll('img'), featuredVideo].filter(Boolean);
+  let loadedCount = 0;
+  const totalMedia = media.length;
+  const startedAt = Date.now();
+
+  const updateProgress = () => {
+    loadedCount += 1;
+    const percentage = Math.round((loadedCount / totalMedia) * 100);
+
+    if (loaderProgress) {
+      loaderProgress.style.width = `${percentage}%`;
+    }
+    if (loaderStatus) {
+      loaderStatus.innerHTML = `Collecting the visuals... <strong>${percentage}%</strong>`;
+    }
+  };
+
+  const mediaPromises = media.map((item) => new Promise((resolve) => {
+    let mediaSettled = false;
+    const finishMedia = () => {
+      if (mediaSettled) {
+        return;
+      }
+
+      mediaSettled = true;
+      updateProgress();
+      resolve();
+    };
+
+    if ((item.tagName === 'IMG' && item.complete) || (item.tagName === 'VIDEO' && item.readyState >= 2)) {
+      finishMedia();
+      return;
+    }
+
+    item.addEventListener('load', finishMedia, { once: true });
+    item.addEventListener('loadeddata', finishMedia, { once: true });
+    item.addEventListener('error', finishMedia, { once: true });
+  }));
+
+  Promise.all(mediaPromises).then(() => {
+    const minimumDuration = Math.max(0, 700 - (Date.now() - startedAt));
+    window.setTimeout(finishProjectLoading, minimumDuration);
+  });
+
+  window.setTimeout(finishProjectLoading, 10000);
+}
+
+loadProjectMedia();
 
 document.querySelectorAll('img').forEach((img) => {
   img.loading = 'lazy';
@@ -26,6 +93,12 @@ if (viewCollectionBtn && gallerySection) {
     gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }
+
+showMoreBtn?.addEventListener('click', () => {
+  const isExpanded = gallerySection.classList.toggle('is-expanded');
+  showMoreBtn.setAttribute('aria-expanded', String(isExpanded));
+  showMoreBtn.firstChild.textContent = isExpanded ? 'SHOW LESS ' : 'SHOW MORE ';
+});
 
 if (featuredVideo && featuredPoster) {
   featuredVideo.addEventListener('ended', () => {

@@ -21,6 +21,7 @@
 
 .thanks-note {
   flex: 1;
+  position: relative;
 }
 
 .thanks-note h1 {
@@ -38,10 +39,165 @@
 }
 
 .star-deco {
+  position: absolute;
+  top: -2.1rem;
+  right: 1.5rem;
   font-size: 4rem;
   color: var(--color-pink);
   display: inline-block;
-  margin-top: 1rem;
+  line-height: 1;
+  transform: rotate(12deg);
+  text-shadow: 3px 3px 0 var(--color-dark);
+  animation: starFloat 2.8s ease-in-out infinite;
+}
+
+@keyframes starFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(20deg);
+  }
+}
+
+.contact-kicker {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  padding: 0.3rem 0.55rem;
+  background: var(--color-yellow);
+  border: 2px solid var(--color-dark);
+  box-shadow: 3px 3px 0 var(--color-dark);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  transform: rotate(-2deg);
+}
+
+.instagram-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: fit-content;
+  margin-top: 0.8rem;
+  padding: 0.65rem 0.8rem;
+  color: var(--color-dark);
+  text-decoration: none;
+  background: var(--color-green);
+  border: var(--border-thick);
+  box-shadow: 5px 5px 0 var(--color-dark);
+  transform: rotate(-2deg);
+}
+
+.instagram-button:hover,
+.instagram-button:focus-visible {
+  background: var(--color-pink);
+  transform: translate(-3px, -3px) rotate(1deg);
+  box-shadow: 8px 8px 0 var(--color-dark);
+}
+
+.instagram-button:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 4px;
+}
+
+.instagram-icon {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  color: #fff;
+  background: var(--color-dark);
+  border: 2px solid var(--color-dark);
+}
+
+.instagram-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.instagram-icon .instagram-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.instagram-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.instagram-copy strong {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+}
+
+.instagram-copy small {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.instagram-arrow {
+  margin-left: 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.contact-details {
+  max-width: 360px;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--color-blue);
+  border: var(--border-thick);
+  box-shadow: 6px 6px 0 var(--color-dark);
+  transform: rotate(1deg);
+}
+
+.detail-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--color-dark);
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+}
+
+.heading-mark {
+  color: var(--color-yellow);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 5.2rem 1fr;
+  gap: 0.65rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(22, 21, 21, 0.45);
+  font-size: 0.86rem;
+}
+
+.detail-label {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.detail-row strong {
+  font-weight: 800;
+}
+
+.detail-footer {
+  padding-top: 0.8rem;
+  font-size: 0.82rem;
+  font-style: italic;
 }
 
 .form-card {
@@ -74,6 +230,23 @@
   padding: 0.2rem 0.7rem;
   border: var(--border-thick);
   box-shadow: 4px 4px 0 var(--color-dark);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--text-soft);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.form-intro {
+  max-width: 34rem;
+  margin: -0.6rem 0 1.35rem;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 .input-group {
@@ -146,5 +319,46 @@
   .thanks-note,
   .form-card {
     width: 100%;
+  }
+
+  .contact-details {
+    max-width: none;
+  }
+
+  .star-deco {
+    top: -1.7rem;
+    right: 0.5rem;
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact-wrapper {
+    margin-top: 2.5rem;
+  }
+
+  .thanks-note h1 {
+    font-size: clamp(2.5rem, 15vw, 4rem);
+  }
+
+  .instagram-button {
+    max-width: 100%;
+  }
+
+  .instagram-copy strong {
+    font-size: 0.92rem;
+  }
+
+  .detail-row {
+    grid-template-columns: 4.4rem 1fr;
+    font-size: 0.78rem;
+  }
+
+  .form-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-card h2 {
+    font-size: 1.75rem;
   }
 }

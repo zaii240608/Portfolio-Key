@@ -10,6 +10,19 @@
 </head>
 <body>
 
+  <div id="projectLoader" class="project-loader" role="status" aria-live="polite">
+    <div class="loader-card">
+      <div class="loader-scribble" aria-hidden="true">✦</div>
+      <span class="loader-eyebrow">ARCHIVE / LOADING</span>
+      <h1>DEVELOPING<br>THE ART</h1>
+      <div class="loader-film" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="loader-progress-track" aria-hidden="true"><span id="loaderProgress"></span></div>
+      <p id="loaderStatus">Preparing the collection... <strong>0%</strong></p>
+    </div>
+  </div>
+
   <nav>
     <div class="logo">Keeyiya</div>
     <ul>
@@ -100,17 +113,20 @@
       </div>
 
       <!-- 6. 👽 Alien Collection -->
-      <div class="project-card card-blue" onclick="openGallery('👽', ['1.png', '2.png', '3.png', '4.png', '5.png', '6.jpg'])">
+      <div class="project-card card-blue" onclick="openGallery('Another Things', ['1.png', '2.png', '3.png', '4.png', '5.png', '6.jpg'])">
         <div class="tape-tag">RANDOM</div>
         <div class="card-img-box">
           <img src="../assets/images/👽/1.png" alt="Alien artwork">
         </div>
         <div class="card-info">
-          <h3>IDK WHT</h3>
+          <h3>ANOTHER THINGS</h3>
           <p>5 Frames • Character Study</p>
         </div>
       </div>
     </section>
+    <button type="button" id="showMoreBtn" class="show-more-btn" aria-expanded="false" aria-controls="gallerySection">
+      SHOW MORE 
+    </button>
   </main>
 
   <!-- MODAL 1: GRID GALLERY -->
@@ -132,7 +148,6 @@
 
         <div class="detail-media-wrap">
           <div class="detail-img-wrapper">
-            <span class="detail-badge">INSPECT MODE </span>
             <img id="detailImage" src="" alt="Detail View">
           </div>
           <p id="detailCaption" class="detail-caption"></p>
